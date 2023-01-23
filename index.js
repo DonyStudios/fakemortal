@@ -7,7 +7,7 @@ canvas.height = 576
 c.fillRect(0, 0, canvas.width, canvas.height)
 
 const gravity = 0.7
-
+// pomocí tovarny vytvori objekty 
 const background = new Sprite({
   position: {
     x: 0,
