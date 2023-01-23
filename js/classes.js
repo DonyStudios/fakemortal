@@ -1,4 +1,5 @@
 class Sprite {
+  // továrna na objekty 
   constructor({
     position,
     imageSrc,
@@ -103,22 +104,14 @@ class Fighter extends Sprite {
     this.draw()
     if (!this.dead) this.animateFrames()
 
-    // attack boxes
+
     this.attackBox.position.x = this.position.x + this.attackBox.offset.x
     this.attackBox.position.y = this.position.y + this.attackBox.offset.y
-
-    // draw the attack box
-    // c.fillRect(
-    //   this.attackBox.position.x,
-    //   this.attackBox.position.y,
-    //   this.attackBox.width,
-    //   this.attackBox.height
-    // )
 
     this.position.x += this.velocity.x
     this.position.y += this.velocity.y
 
-    // gravity function
+    // gravitace
     if (this.position.y + this.height + this.velocity.y >= canvas.height - 96) {
       this.velocity.y = 0
       this.position.y = 330
@@ -145,14 +138,14 @@ class Fighter extends Sprite {
       return
     }
 
-    // overriding all other animations with the attack animation
+    // prepsaní animací na útočnou
     if (
       this.image === this.sprites.attack1.image &&
       this.framesCurrent < this.sprites.attack1.framesMax - 1
     )
       return
 
-    // override when fighter gets hit
+    // kdyz hrac dostane zasah
     if (
       this.image === this.sprites.takeHit.image &&
       this.framesCurrent < this.sprites.takeHit.framesMax - 1
